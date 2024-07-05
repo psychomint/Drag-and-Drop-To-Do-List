@@ -1,0 +1,1 @@
+export const LOGO_URL = "https://img.freepik.com/free-vector/quill-pen-logo-template_23-2149852429.jpg";

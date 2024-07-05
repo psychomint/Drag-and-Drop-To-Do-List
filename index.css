@@ -1,3 +1,67 @@
-#root {
-    color: blue;
-}
+/* Style for the navigation bar */
+.navbar {
+    background-color: #001529; /* Dark background color */
+    overflow: hidden; /* Ensure overflow is hidden */
+  }
+  
+  /* Style for the navigation links */
+  .navbar li {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline */
+    padding: 14px 20px; /* Padding around each link */
+    display:inline-block; /* Display links horizontally */
+    font-size: 25px;
+    
+  }
+  
+  /* Change the color of links when hovered */
+  .navbar li:hover {
+    color: #1890ff; 
+    cursor: pointer;
+  }
+  
+  
+  .header {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Make logo and navbar share the space */
+    align-items: center; /* Vertically center items */
+    background-color: #001529; /* Dark background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding around the header */
+  }
+  
+  .logo{
+    width:80px;
+    height:auto;
+  }
+  .logo:hover{
+    cursor: pointer;
+  }
+  .login:hover{
+    cursor: pointer;
+  }
+
+  textarea{
+    resize: none;
+    width: 250px;
+    height:200px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: black;
+    color:white;
+  }
+  
+  .block {
+    display: inline-block;
+    border: 2px solid white;
+  }
+  .card{
+    display:list-item;
+  }
+  
+  #root{
+    background-color:#001529;
+  }
+  
