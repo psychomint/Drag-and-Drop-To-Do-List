@@ -1,14 +1,12 @@
 import React from "react"
 import ReactDOM  from "react-dom/client"
 import Header from "./components/Header"
-import Block from "./components/Block"
-import Body from "./components/Body"
-
+import ToDoList from "./components/ToDoList"
 const Applayout = () => {
     return(
         <div className="App">
             <Header/>
-            <Body/>
+            <ToDoList todos={[]}/> 
             
         </div>
     )
