@@ -1,62 +1,52 @@
-import { LOGO_URL } from "../utils/constant"
-import { useState } from "react";
-import { Button } from "antd";
-import { Menu, Drawer, Button } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
-
-const Header = () => {
-
-        const[loginbtn, setloginbtn] = useState("Login");
-        const [visible, setVisible] = useState(false);
-
-        const showDrawer = () => {
-          setVisible(true);
-        };
-      
-        const onClose = () => {
-          setVisible(false);
-        };
-      
-        return (
-          <nav>
-            <div className="logo">My Logo</div>
-            <div className="desktop-menu">
-              <Menu mode="horizontal">
-                <Menu.Item key="home">Home</Menu.Item>
-                <Menu.Item key="about">About</Menu.Item>
-                <Menu.Item key="services">Services</Menu.Item>
-                <Menu.Item key="contact">Contact</Menu.Item>
-                <Menu.Item key="login"><Button type="primary" className="login" onClick = {() => {
-                        loginbtn == "Login" ? setloginbtn("Logout") : setloginbtn("Login")
-                    }}>{loginbtn}</Button></Menu.Item>
-              </Menu>
-            </div>
-            <div className="mobile-menu">
-              <Button type="primary" onClick={showDrawer}>
-                <MenuOutlined />
-              </Button>
-              
-              <Drawer
-                title="Menu"
-                placement="right"
-                onClose={onClose}
-                visible={visible}
-              >
-                <Menu mode="vertical">
-                  <Menu.Item key="home">Home</Menu.Item>
-                  <Menu.Item key="about">About</Menu.Item>
-                  <Menu.Item key="services">Services</Menu.Item>
-                  <Menu.Item key="contact">Contact</Menu.Item>
-                  <Menu.Item key="login"><Button type="primary" className="login" onClick = {() => {
-                        loginbtn == "Login" ? setloginbtn("Logout") : setloginbtn("Login")
-                    }}>{loginbtn}</Button></Menu.Item>
-                </Menu>
-              </Drawer>
-            </div>
-          </nav>
-        );
-    
+function Header() {
+  return (
+    <>
+      {['md'].map((expand) => (
+        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
+          <Container fluid>
+            <Navbar.Brand href="#">DragToDrop</Navbar.Brand>
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                  DragToDrop
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav.Link href="#action1">Home</Nav.Link>
+                  <Nav.Link href="#action2">About Us</Nav.Link>
+                  <Nav.Link href="#action2">GitHub</Nav.Link>
+                  <Nav.Link href="#action2">Portfolio</Nav.Link>
+                </Nav>
+                <Form className="d-flex">
+                  <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    className="me-2"
+                    aria-label="Search"
+                  />
+                  <Button variant="outline-success">Search</Button>
+                </Form>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
+      ))}
+    </>
+  );
 }
 
 export default Header;

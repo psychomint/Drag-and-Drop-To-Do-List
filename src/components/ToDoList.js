@@ -3,6 +3,7 @@ import { DndContext } from "@dnd-kit/core";
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import DropToDelete from "./DropToDelete";
+import './ToDoList.css';  
 
 const ToDoList = ({ todos: initialTodos }) => {
   const [todos, setTodos] = useState(initialTodos);
@@ -40,8 +41,6 @@ const ToDoList = ({ todos: initialTodos }) => {
     }
     const draggedTodoId = active.id;
     const droppedAreaId = over.id;
-    console.log(draggedTodoId);
-    console.log(droppedAreaId);
 
     if (droppedAreaId === "delete-task-area") {
       deleteTodo(active.id);
@@ -50,15 +49,15 @@ const ToDoList = ({ todos: initialTodos }) => {
     }
   };
 
-  const dumkey = uuidv4();
   const handleAddTodo = (e) => {
     e.preventDefault();
+    const newTodoId = uuidv4();
 
     // add the todo
     setTodos([
       ...todos,
       {
-        id: dumkey,
+        id: newTodoId,
         text: newTodoText,
         status: "to-do",
       },
@@ -69,35 +68,54 @@ const ToDoList = ({ todos: initialTodos }) => {
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <h2 style={{ marginLeft: "10px" }}>To do list</h2>
-      <form
-        onSubmit={handleAddTodo}
-        style={{ margin: "10px", display: "flex", gap: "10px" }}
-      >
-        <input
-          type="text"
-          name="newTodoText"
-          placeholder="type in your todo"
-          value={newTodoText}
-          onChange={(e) => setNewTodoText(e.target.value)}
-        />
-        <button type="submit">Add todo</button>
-      </form>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <TaskColumn
-          title="To do"
-          todos={todos.filter((t) => t.status === "to-do")}
-        />
-        <TaskColumn
-          title="In progress"
-          todos={todos.filter((t) => t.status === "in-progress")}
-        />
-        <TaskColumn
-          title="Done"
-          todos={todos.filter((t) => t.status === "done")}
-        />
+      <div className="container my-5">
+        <h2 className="text-center mb-4">To-Do List</h2>
+        <form onSubmit={handleAddTodo} className="row g-3 justify-content-center mb-4">
+          <div className="col-auto">
+            <input
+              type="text"
+              name="newTodoText"
+              placeholder="Type in your task"
+              value={newTodoText}
+              onChange={(e) => setNewTodoText(e.target.value)}
+              required
+              aria-label="New Todo"
+              className="form-control"
+            />
+          </div>
+          <div className="col-auto">
+            <button type="submit" className="btn btn-primary">
+              <i className="bi bi-plus me-2"></i> Add Task
+            </button>
+          </div>
+        </form>
+
+        <div className="row gy-4">
+          <div className="col-12 col-md-4">
+            <TaskColumn
+              title="To do"
+              todos={todos.filter((t) => t.status === "to-do")}
+              className="task-column bg-light border border-warning"
+            />
+          </div>
+          <div className="col-12 col-md-4">
+            <TaskColumn
+              title="In progress"
+              todos={todos.filter((t) => t.status === "in-progress")}
+              className="task-column bg-light border border-info"
+            />
+          </div>
+          <div className="col-12 col-md-4">
+            <TaskColumn
+              title="Done"
+              todos={todos.filter((t) => t.status === "done")}
+              className="task-column bg-light border border-success"
+            />
+          </div>
+        </div>
+
+        <DropToDelete className="drop-to-delete mt-4 p-3 text-center bg-danger text-white rounded" />
       </div>
-      <DropToDelete/>
     </DndContext>
   );
 };

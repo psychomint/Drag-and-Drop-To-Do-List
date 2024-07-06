@@ -1,0 +1,52 @@
+
+
+.task-column {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .task-item {
+    background: #f8f9fa;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    transition: transform 0.2s;
+  }
+  
+  .task-item:hover {
+    transform: translateY(-2px);
+  }
+  
+  .drop-to-delete {
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .drop-to-delete:hover {
+    background-color: #c82333;
+  }
+  
+  .todo-form input[type="text"] {
+    border: 2px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    width: 300px;
+  }
+  
+  .todo-form button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .todo-form button i {
+    font-size: 1.2rem;
+  }
+  

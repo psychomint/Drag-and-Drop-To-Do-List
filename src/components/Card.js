@@ -10,6 +10,7 @@ export const Card = ({ todo }) => {
         border: "1px solid black",
         padding: "10px",
         margin: "5px 0",
+        
       };
     return (
       <div

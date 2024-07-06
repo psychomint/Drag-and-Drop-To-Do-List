@@ -18,7 +18,6 @@ const TaskColumn = ({ title, todos }) => {
       >
         <h3>{title}</h3>
         <div>
-          <h6>My Self is Brijesh aka brishi</h6>
           {todos.map((todo) => (
           <Card key={todo.id} todo={todo} />
         ))}
